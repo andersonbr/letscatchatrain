@@ -37,8 +37,8 @@ var reqTranspAPI = function(localidade, res) {
 						"url": `https://www.google.com/maps/place/${station.name}/${station.latitude},${station.longitude},15z`,
 						"title": `Estação ${station.name}`
 					}
+					botoes.push(botao);
 				}
-				botoes.push(botao);
 			} else {
 				text = `Não foram encontradas estações usando como parâmetro ${localidade}`;
 			}
