@@ -14,17 +14,20 @@ var transportapi = {
 	key: "336b598890a04c0f60515cea116a2781"
 }
 
-app.get('/find/:place', function(req, res) {
-	var localidade = encodeURIComponent(req.params.place)
-	var url = `http://transportapi.com/v3/uk/places.json?query=${localidade}&type=train_station&app_id=${transportapi.appid}&app_key=${transportapi.key}`
-	console.log(url);
-	res.json({"messages" : [
+var reqTranspAPI = function(localidade, res) {
+	var url = `http://transportapi.com/v3/uk/places.json?query=${localidade}`+
+		`&type=train_station&app_id=${transportapi.appid}&app_key=${transportapi.key}`
+	http.get(url, function(resTransp) {
+		resTransp.pipe(res);
+	}).on('error', function(err) {
+	});
+	/*res.json({"messages" : [
 		{
 			"attachment": {
 				"type": "template",
 				"payload": {
 					"template_type": "button",
-					"text": "Estação tal!",
+					"text": "Está aqui as estações encontradas próximas a !",
 					"buttons": [
 						{
 							"type": "show_block",
@@ -33,14 +36,19 @@ app.get('/find/:place', function(req, res) {
 						},
 						{
 							"type": "web_url",
-							"url": "https://rockets.chatfuel.com",
+							"url": "https://www.google.com/maps/place/[[name]]/@[[lat]],[[lng]],15z",
 							"title": "Visit Website"
 						}
 					]
 				}
 			}
 		}
-	]});
+	]});*/
+}
+
+app.get('/find/:place', function(req, res) {
+	var localidade = encodeURIComponent(req.params.place)
+	reqTranspAPI(res);
 });
 
 chttp.listen(3002, function() {
