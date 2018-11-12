@@ -1,0 +1,8 @@
+{
+	"name": "letscatchatrain",
+	"version": "1.0.0",
+	"description": "Chatbots",
+	"dependencies": {
+		"express": "4.16.4"
+	}
+}
