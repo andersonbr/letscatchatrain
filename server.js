@@ -51,14 +51,16 @@ var reqTranspAPI = function(localidade, res) {
 			// enviar resposta
 			res.json({"messages" : [
 				{
-					"attachment": {
+					"text": text,
+					"quick_replies": botoes
+					/* "attachment": {
 						"type": "template",
 						"payload": {
 							"template_type": "button",
 							"text": text,
 							"buttons": botoes
 						}
-					}
+					} */
 				}
 			]});
 		});
@@ -86,7 +88,8 @@ var reqTranspAPI = function(localidade, res) {
 }
 
 app.get('/find/:place', function(req, res) {
-	var localidade = encodeURIComponent(req.params.place)
+	//var localidade = encodeURIComponent(req.params.place)
+	var localidade = req.params.place
 	reqTranspAPI(localidade, res);
 });
 
