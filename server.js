@@ -35,7 +35,7 @@ var reqTranspAPI = function(localidade, res) {
 					var botao = {
 						"type": "web_url",
 						"url": `https://www.google.com/maps/place/${station.name}/${station.latitude},${station.longitude},15z`,
-						"title": `Estação ${station.name}` + 
+						"title": `Estação ${station.name}`
 					}
 				}
 				botoes.push(botao);
