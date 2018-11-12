@@ -30,7 +30,7 @@ var reqTranspAPI = function(localidade, res) {
 			var botoes = [];
 			var text = `Está aqui as estações encontradas próximas a ${localidade}!`;
 			if (transp.member && transp.member.length > 0) {
-				for (var i = 0; i < transp.member.length; i++) {
+				for (var i = 0; i < Math.min(2,transp.member.length); i++) {
 					var station = transp.member[i];
 					var botao = {
 						"type": "web_url",
