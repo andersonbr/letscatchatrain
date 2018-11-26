@@ -26,7 +26,8 @@ app.get('/', function (req, res) {
 //Twilio webhook
 app.post('/sms/', function (req, res) {
     var botSays = 'You said: ' + req.body.Body;
-    var twiml = new twilio.TwimlResponse();
+    //var twiml = new twilio.TwimlResponse(); // funcao mudada
+    var twiml = twilio.twiml.MessagingResponse();
     twiml.message(botSays);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
