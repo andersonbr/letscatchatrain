@@ -3,6 +3,8 @@
 	"version": "1.0.0",
 	"description": "Chatbots",
 	"dependencies": {
-		"express": "4.16.4"
+		"express": "4.16.4",
+		"request": "^2.88.0",
+		"twilio": "^3.24.0"
 	}
 }
