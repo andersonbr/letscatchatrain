@@ -59,7 +59,7 @@ app.post('/sms/', function (req, res) {
 			res.end(twiml.toString());
 		} else {
 			getTrainInfo(
-				response.result.intentName,
+				response.result.metadata.intentName, // diferente do livro
 				response.result.parameters, res
 			)
 		}
