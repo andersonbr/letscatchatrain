@@ -115,7 +115,7 @@ function getLiveDepartures(source, res){
 				console.log('BotSays: ' + botSays);
 
 				var twiml = new twilio.TwimlResponse();
-				twiml.message(botSays);”
+				twiml.message(botSays);
 				res.writeHead(200, {'Content-Type': 'text/xml'});
 				res.end(twiml.toString());
 			} 
