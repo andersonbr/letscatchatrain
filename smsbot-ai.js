@@ -105,7 +105,7 @@ function getLiveDepartures(source, res){
 				var botSays = summarize(json.departures.all, 5);
 				console.log('BotSays: ' + botSays);
 
-				var twiml = new twilio.TwimlResponse();
+				var twiml = new twilio.twiml.MessagingResponse();
 				twiml.message(botSays);
 				res.writeHead(200, {'Content-Type': 'text/xml'});
 				res.end(twiml.toString());
@@ -114,7 +114,7 @@ function getLiveDepartures(source, res){
 				var botSays = 'No Departures found!'
 				console.log('BotSays: ' + botSays);
 
-				var twiml = new twilio.TwimlResponse();
+				var twiml = new twilio.twiml.MessagingResponse();
 				twiml.message(botSays);
 				res.writeHead(200, {'Content-Type': 'text/xml'});
 				res.end(twiml.toString());
@@ -126,7 +126,7 @@ function getLiveDepartures(source, res){
 			var botSays = 'Error in fetching trains info. Sorry!';
 			console.log('BotSays: ' + botSays);
 
-			var twiml = new twilio.TwimlResponse();
+			var twiml = new twilio.twiml.MessagingResponse();
 			twiml.message(botSays);
 			res.writeHead(200, {'Content-Type': 'text/xml'});
 			res.end(twiml.toString());
@@ -191,7 +191,7 @@ function getNextTrain(source, destination, res){
 						   + 'Sorry!';
 			console.log('BotSays: ' + botSays);
 
-			var twiml = new twilio.TwimlResponse();
+			var twiml = new twilio.twiml.MessagingResponse();
 			twiml.message(botSays);
 			res.writeHead(200, {'Content-Type': 'text/xml'});
 			res.end(twiml.toString());
