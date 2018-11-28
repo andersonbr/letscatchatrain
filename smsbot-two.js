@@ -15,20 +15,21 @@ app.use(bodyParser.json())
 
 // Spin up the server
 app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
+	console.log('running on port', app.get('port'))
 })
 
 // Index route
 app.get('/', function (req, res) {
-    res.send('Hello world, I am SMS bot.')
+	res.send('Hello world, I am SMS bot.')
 })
 
 //Twilio webhook
 app.post('/sms/', function (req, res) {
-    var botSays = 'You said: ' + req.body.Body;
-    //var twiml = new twilio.TwimlResponse(); // funcao mudada
-    var twiml = twilio.twiml.MessagingResponse();
-    twiml.message(botSays);
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
+	var botSays = 'You said: ' + req.body.Body;
+	//var twiml = new twilio.TwimlResponse(); // funcao mudada
+	var twiml = new twilio.twiml.MessagingResponse();
+	console.log(twiml)
+	twiml.message(botSays);
+	res.writeHead(200, {'Content-Type': 'text/xml'});
+	res.end(twiml.toString());
 })
