@@ -102,7 +102,7 @@ function getLiveDepartures(source, res){
 			var json = JSON.parse(body);
 			if (json.departures){
 
-				var botSays = summarize(json.departures.all, 5, source);
+				var botSays = summarize(json.departures.all, 5, json.station_name);
 				console.log('BotSays: ' + botSays);
 
 				var twiml = new twilio.twiml.MessagingResponse();
@@ -134,7 +134,7 @@ function getLiveDepartures(source, res){
 	});
 }
 
-
+// parametro source nao existia no livro, causando erro no else.
 function summarize(departures, n, source) {
 	var out = '';
 	if (departures.length > 0) {
