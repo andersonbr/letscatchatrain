@@ -46,9 +46,9 @@ app.post('/sms/', function (req, res) {
 	var requestAPIAI = apiai.textRequest(userUtterance, { sessionId: sessionId })
 	var botSays = ''
 	requestAPIAI.on('response', function(response) {
-		console.log(response)
+		console.log(JSON.stringify(response, null, 2))
 		if (response.result.actionIncomplete) {
-			botSays = reponse.result.fulfillment.speech
+			botSays = response.result.fulfillment.speech
 			console.log(`Botsays: ${botSays}`)
 
 			//var twiml = new twilio.TwimlResponse(); // funcao mudada
@@ -102,7 +102,7 @@ function getLiveDepartures(source, res){
 			var json = JSON.parse(body);
 			if (json.departures){
 
-				var botSays = summarize(json.departures.all, 5);
+				var botSays = summarize(json.departures.all, 5, source);
 				console.log('BotSays: ' + botSays);
 
 				var twiml = new twilio.twiml.MessagingResponse();
@@ -135,7 +135,7 @@ function getLiveDepartures(source, res){
 }
 
 
-function summarize(departures, n) {
+function summarize(departures, n, source) {
 	var out = '';
 	if (departures.length > 0) {
 		out = 'Live departures:\n';
