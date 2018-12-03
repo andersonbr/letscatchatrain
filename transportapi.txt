@@ -1,0 +1,1 @@
+http://transportapi.com/v3/uk/train/station/EDB/live.json?app_id=81b79adc&app_key=336b598890a04c0f60515cea116a2781
